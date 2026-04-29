@@ -19,17 +19,15 @@
    git clone [https://github.com/ryann-bot/sensii.git](https://github.com/ryann-bot/sensii.git)
    cd sensii
 
-   Install Dependensi
-2. **Pastikan sudah install Node.js**.
-
-```Bash
-npm install
-```
+2. **Install Dependensi**.
+   * Pastikan sudah install Node.js
+   ```Bash
+   npm install
 
 3. **Running di Lokal**
- ```Bash
-npm start
-```
+    ```Bash
+   npm start
+
 
 ## 📁 Struktur Project
 src/App.js : Logika utama dan entry point aplikasi.
@@ -39,11 +37,11 @@ src/App.css : Seluruh styling visual (Neon Mode & Grid System).
 assets/ : Menyimpan aset logo dan gambar pendukung.
 
 ## 📝 Konfigurasi
-Untuk mengganti link aplikasi utama (Figma), buka file src/App.js dan ubah variabel berikut:
+* Untuk mengganti link aplikasi utama (Figma), buka file src/App.js dan ubah variabel berikut:
 
-```JavaScript
-const appLink = "URL_PROTOTYPE_DISINI";
-```
+    ```JavaScript
+   const appLink = "URL_PROTOTYPE_DISINI";
+
 ## 🤝 Kontribusi
 Project ini bersifat Official tapi Bukan Komersil. Silahkan buat Pull Request kalau lo punya ide fitur atau perbaikan visual yang lebih gokil.
 
