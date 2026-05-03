@@ -1,103 +1,108 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 
 function App() {
-  const [showLogin, setShowLogin] = useState(false);
-
-  // Fungsi buat scroll mulus ke bagian fitur
-  const scrollToFeatures = () => {
-    const featureSection = document.getElementById('features-section');
-    if (featureSection) {
-      featureSection.scrollIntoView({ behavior: 'smooth' });
-    }
+  // Fungsi Scroll ke 3 Kontainer (Summary)
+  const scrollToSummary = () => {
+    const summarySection = document.getElementById('manual-book');
+    if (summarySection) summarySection.scrollIntoView({ behavior: 'smooth' });
   };
+
+  // Fungsi Buka README (Panduan Pemakaian)
+  const openReadme = () => {
+    window.open("https://github.com/ryann-bot/sensii/blob/main/README.md", "_blank");
+  };
+
+  // Links
+  const githubRyanBot = "https://github.com/ryann-bot/";
+  const githubRepo = "https://github.com/ryann-bot/sensii/tree/main/sensi-app/src";
+  const appLink = "https://joy-glyph-77113954.figma.site/";
+  const instagramLink = "https://instagram.com/rf.captr";
 
   return (
     <div className="app-container">
-      {/* --- NAVBAR --- */}
+      <div className="ambient-bg">
+        <div className="blur-circle circle-1"></div>
+        <div className="blur-circle circle-2"></div>
+      </div>
+
       <nav className="navbar">
-        <div className="nav-logo" onClick={() => setShowLogin(false)}>SENSI.PROD</div>
+        {/* Pojok Kiri Atas jadi RF.CAPTR */}
+        <div className="nav-logo">RF.CAPTR</div>
         <ul className="nav-links">
-          <li onClick={() => setShowLogin(false)}>Beranda</li>
-          <li onClick={scrollToFeatures}>Fitur</li>
-          <li>Kontak</li>
+          {/* Official Page jadi Connect (Langsung ke IG) */}
+          <li><a href={instagramLink} target="_blank" rel="noreferrer" className="nav-git-link">Connect</a></li>
+          {/* Manual Book jadi Summary (Scroll ke bawah) */}
+          <li onClick={scrollToSummary}>Summary</li>
+          <li><a href={githubRyanBot} target="_blank" rel="noreferrer" className="nav-git-link">GitHub</a></li>
         </ul>
       </nav>
 
-      {/* --- HERO SECTION --- */}
-      <div className="main-content">
+      <main className="main-content">
         <section className="text-section">
-          <h2 className="section-title">OUR PRODUCT</h2>
-          
-          <div className="content-switch-area">
-            {!showLogin ? (
-              /* TAMPILAN DASHBOARD AWAL */
-              <div className="fade-in">
-                <h1 className="brand-name">
-                  SENSI : <span className="highlight">Sistem Presensi Efisiensi</span>
-                </h1>
-                <p className="description">
-                  Solusi mutakhir untuk memangkas birokrasi absen yang rawan kesalahan. 
-                  Berhenti membuang waktu pada hal manual dan mulai fokus pada produktivitas.
-                </p>
-                <div className="button-group">
-                  <button className="btn btn-primary" onClick={() => setShowLogin(true)}>
-                    Masuk ke Sistem
-                  </button>
-                  <button className="btn btn-secondary" onClick={scrollToFeatures}>
-                    Pelajari Fitur
-                  </button>
-                </div>
+          <div className="content-wrapper">
+            {/* Official Product jadi Documentation */}
+            <h2 className="section-subtitle">DOCUMENTATION</h2>
+            
+            <div className="fade-container">
+              <h1 className="brand-title">
+                SENSI : <span className="highlight">Efficiency Redefined</span>
+              </h1>
+              <p className="description">
+                Laman dokumentasi resmi <b>SENSI</b>. Sistem presensi open-source 
+                yang bisa Anda gunakan, modifikasi, dan kembangkan sesuai kebutuhan instansi Anda.
+              </p>
+              <div className="button-group">
+                <a href={appLink} target="_blank" rel="noreferrer" className="btn btn-primary">
+                  Masuk ke Sistem
+                </a>
+                <a href={githubRepo} target="_blank" rel="noreferrer" className="btn btn-secondary">
+                  Explore Code
+                </a>
               </div>
-            ) : (
-              /* TAMPILAN LOGIN FORM */
-              <div className="fade-in">
-                <h1 className="brand-name">Selamat Datang <span className="highlight">Kembali</span></h1>
-                <p className="description">Silahkan masukkan kredensial untuk mengakses dashboard presensi.</p>
-                <div className="login-form">
-                  <input type="text" placeholder="Username / Email" className="form-input" />
-                  <input type="password" placeholder="Password" className="form-input" />
-                  <div className="button-group">
-                    <button className="btn btn-primary">Login</button>
-                    <button className="btn btn-secondary" onClick={() => setShowLogin(false)}>Kembali</button>
-                  </div>
-                </div>
-              </div>
-            )}
+              {/* Tetap arah ke README GitHub */}
+              <p className="manual-link" onClick={openReadme}>
+                Baca panduan pemakaian &rarr;
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* --- VISUAL SECTION (BOX MERAH & LOGO) --- */}
         <section className="visual-section">
-          <div className="visual-wrapper">
-            <div className="red-accent-box"></div>
+          <div className="visual-box-container">
+            <div className="red-bg-box"></div>
             <img 
               src="https://raw.githubusercontent.com/ryann-bot/sensii/main/assets/logo1.png" 
-              alt="SENSI Logo" 
-              className="floating-logo"
+              alt="Logo" 
+              className="center-logo"
             />
+            <div className="scanline"></div>
           </div>
         </section>
-      </div>
+      </main>
 
-      {/* --- FEATURES SECTION --- */}
-      <section id="features-section" className="features-container">
-        <div className="feature-card">
-          <h3 className="highlight">01. Real-time</h3>
-          <p>Laporan presensi instan tanpa delay untuk manajemen yang lebih responsif.</p>
-        </div>
-        <div className="feature-card">
-          <h3 className="highlight">02. Secure</h3>
-          <p>Keamanan data tingkat tinggi menggunakan enkripsi SHA256.</p>
-        </div>
-        <div className="feature-card">
-          <h3 className="highlight">03. Integrated</h3>
-          <p>Terhubung langsung dengan cloud untuk akses di mana saja, kapan saja.</p>
+      {/* Target Scroll Summary */}
+      <section id="manual-book" className="features-container">
+        <div className="manual-grid">
+          <div className="feature-card">
+            <h3 className="highlight">01. Setup Environment</h3>
+            <p>Clone repository kami, lalu jalankan <code>npm install</code> untuk menyiapkan dependensi sistem.</p>
+          </div>
+          <div className="feature-card">
+            <h3 className="highlight">02. Configuration</h3>
+            <p>Sesuaikan file <code>.env</code> dengan database atau API presensi yang Anda gunakan.</p>
+          </div>
+          <div className="feature-card">
+            <h3 className="highlight">03. Deployment</h3>
+            <p>Build aplikasi Anda dan deploy ke server pilihan. SENSI siap melayani presensi efisiensi.</p>
+          </div>
         </div>
       </section>
-      
+
       <footer className="footer">
-        PROD BY RF.CAPTR &copy; 2026
+        <a href={instagramLink} target="_blank" rel="noreferrer">
+          PROD BY RF.CAPTR &copy; 2026 | OPEN SOURCE
+        </a>
       </footer>
     </div>
   );
