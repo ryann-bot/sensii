@@ -14,7 +14,7 @@ function App() {
   };
 
   // Links
-  const githubRyanBot = "https://github.com/ryann-bot/";
+  const githubRyanBot = "https://github.com/dr-vacillator/";
   const githubRepo = "https://github.com/ryann-bot/sensii/tree/main/sensi-app/src";
   const appLink = "https://joy-glyph-77113954.figma.site/";
   const instagramLink = "https://instagram.com/rf.captr";
